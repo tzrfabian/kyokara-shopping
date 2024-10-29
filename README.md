@@ -1,3 +1,7 @@
+# kyokara-shopping
+
+An e-commerce website concept where users can view and add products they like to their wishlist.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
