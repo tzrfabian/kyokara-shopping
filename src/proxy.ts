@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { UserType } from "./types/UserType";
@@ -6,7 +5,7 @@ import { WithId } from "mongodb";
 import ErrorHandler from "./errors/ErrorHandler";
 
 async function auth(request: NextRequest) {
-    const authCookie = cookies().get('Authorization')
+    const authCookie = request.cookies.get('Authorization')
     if(!authCookie) throw new Error("Invalid Token");
     const [type, token] = authCookie.value.split(' ')
     if(type !== 'Bearer') throw new Error("Invalid Token");
@@ -21,7 +20,7 @@ async function auth(request: NextRequest) {
     return requestHeaders;
 }
 
-export async function middleware(request:NextRequest) {
+export async function proxy(request:NextRequest) {
     try {
         // Authentication
         const requestHeaders = await auth(request);
