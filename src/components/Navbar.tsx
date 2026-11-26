@@ -6,7 +6,8 @@ import ListMenuNavbar from './ListMenuNavbar';
 import { cookies } from 'next/headers';
 
 export default async function Navbar() {
-  const isLogin = cookies().get('Authorization');
+  const cookieStore = await cookies();
+  const isLogin = cookieStore.get('Authorization');
   return (
     <header className="flex bg-white border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
   <div className="flex flex-wrap items-center lg:gap-y-2 gap-4 w-full">
