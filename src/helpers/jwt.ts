@@ -1,11 +1,22 @@
-import jwt from 'jsonwebtoken';
+import { jwtVerify, SignJWT, type JWTPayload } from 'jose';
 
-const JWT_SECRET: string = process.env.JWT_SECRET as string;
+const getJwtSecret = () => {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+        throw new Error("JWT_SECRET is not configured");
+    }
 
-export const signToken = (data: object): string => {
-    return jwt.sign(data, JWT_SECRET);
+    return new TextEncoder().encode(secret);
 }
 
-export const verifyToken = (token: string): object | string => {
-    return jwt.verify(token, JWT_SECRET);
+export const signToken = (data: Record<string, unknown>): Promise<string> => {
+    return new SignJWT(data)
+        .setProtectedHeader({ alg: "HS256" })
+        .setIssuedAt()
+        .sign(getJwtSecret());
+}
+
+export const verifyToken = async (token: string): Promise<JWTPayload> => {
+    const { payload } = await jwtVerify(token, getJwtSecret());
+    return payload;
 }

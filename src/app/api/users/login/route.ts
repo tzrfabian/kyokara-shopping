@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
         }
         const {password, ...userData} = user;
         console.log(password);
-        const access_token = signToken(userData);
+        const access_token = await signToken(userData);
         const cookieStore = await cookies();
         cookieStore.set('Authorization', `Bearer ${access_token}`);
 
