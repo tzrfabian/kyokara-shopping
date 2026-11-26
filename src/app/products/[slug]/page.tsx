@@ -3,13 +3,13 @@ import AddToWishlistBtn from "@/components/AddToWishlistBtn";
 import { Metadata } from "next";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`);
   const product: ProductType = await data.json();
 
@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPerSlug(props: Props) {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${props.params.slug}`);
+  const { slug } = await props.params;
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`);
   const product: ProductType = await data.json();
   
   return (
