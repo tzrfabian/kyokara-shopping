@@ -1,9 +1,9 @@
 import ErrorHandler from "@/errors/ErrorHandler";
 import { Product } from "@/models/ProductModel";
 
-export async function GET(request: Request, { params }: { params: {slug: string} }) {
+export async function GET(request: Request, { params }: { params: Promise<{slug: string}> }) {
     try {
-        const {slug} = params;
+        const {slug} = await params;
         // const userIdHeader = request.headers.get('x-user-id');
         // console.log(userIdHeader);
         // if(userIdHeader) {
