@@ -2,16 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { UserType } from "./types/UserType";
 import { WithId } from "mongodb";
-import ErrorHandler from "./errors/ErrorHandler";
+import ErrorHandler, { CustomError } from "./errors/ErrorHandler";
 
 async function auth(request: NextRequest) {
     const authCookie = request.cookies.get('Authorization')
-    if(!authCookie) throw new Error("Invalid Token");
+    if(!authCookie) throw new CustomError("Invalid Token", 401);
     const [type, token] = authCookie.value.split(' ')
-    if(type !== 'Bearer') throw new Error("Invalid Token");
+    if(type !== 'Bearer') throw new CustomError("Invalid Token", 401);
 
     const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET)
-    const {payload} = await jwtVerify<WithId<UserType>>(token, jwtSecret);
+    let payload: WithId<UserType>;
+    try {
+        ({payload} = await jwtVerify<WithId<UserType>>(token, jwtSecret));
+    } catch (error) {
+        if (error instanceof Error) {
+            throw new CustomError("Invalid Token", 401);
+        }
+        throw error;
+    }
 
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set('x-user-id', payload._id.toString());

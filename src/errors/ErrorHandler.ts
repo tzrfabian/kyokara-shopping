@@ -1,7 +1,9 @@
 import {ZodError} from "zod"
 
 export default function ErrorHandler(error: unknown) {
-    if(error instanceof ZodError) {
+    if(error instanceof CustomError) {
+        return Response.json({ error: error.message }, { status: error.status });
+    } else if(error instanceof ZodError) {
         const errFormat = error.issues[0].path[0].toString() + " " +
                           error.issues[0].message.toLowerCase();
         return Response.json({ error: errFormat }, { status: 400});
