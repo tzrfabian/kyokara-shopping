@@ -39,12 +39,12 @@ export default function RemoveWishlistBtn({ productId, setIsWished, fetchWishlis
   };
 
   return (
-    <div>
+    <div className="w-full">
         <button 
           onClick={handleRemoveFromWishlist}
           type='button'
           disabled={isRemoving}
-          className="px-2 py-1 text-xs border-2 border-orange-600 font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-orange-300 focus:bg-gray-400 focus:outline-none">
+          className="min-h-11 w-full rounded border-2 border-orange-600 bg-white px-2 py-2 text-[10px] font-semibold uppercase text-gray-900 transition-colors hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 disabled:cursor-wait disabled:opacity-70 sm:w-auto sm:text-xs">
           {isRemoving ? "Removing..." : "Remove from Wishlist"}
         </button>
     </div>

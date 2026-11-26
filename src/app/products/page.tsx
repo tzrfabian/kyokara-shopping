@@ -45,9 +45,9 @@ export default function Products() {
     }
 
   return (
-    <div className="container my-8 px-4 mx-auto">
-        <p className="text-center font-bold text-2xl mb-8">List of Our Products</p>
-        <div className="mb-8">
+    <main className="mx-auto my-6 w-full max-w-7xl px-4 sm:my-10 sm:px-6 lg:px-8">
+        <h1 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">List of Our Products</h1>
+        <div className="mb-8 sm:mb-10">
             <SearchBar onSearch={handleSearchResults}/>
         </div>
       <InfiniteScroll
@@ -61,7 +61,7 @@ export default function Products() {
           </div>
         }
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5 xl:grid-cols-5">
           {loading && products.length === 0 ? (
             <Loading />
           ) : (
@@ -71,6 +71,6 @@ export default function Products() {
           )}
         </div>
       </InfiniteScroll>
-    </div>
+    </main>
   )
 }

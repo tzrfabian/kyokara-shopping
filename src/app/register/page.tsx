@@ -70,8 +70,8 @@ export default function Register() {
   }
 
   return (
-<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
-  <div className="w-full">
+<main className="flex min-h-[100svh] items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-100 px-4 py-8 sm:px-6">
+  <div className="w-full max-w-md rounded-2xl bg-white px-6 py-8 shadow-xl ring-1 ring-orange-900/5 sm:px-10 sm:py-10">
     <div className="text-center">
       <h1 className="text-3xl font-semibold text-orange-900">Sign Up</h1>
       <p className="mt-2 text-orange-600">
@@ -82,12 +82,15 @@ export default function Register() {
       <form onSubmit={handleRegister}>
         <div className="relative mt-6">
           <input
+            id="name"
             type="text"
             name="name"
             placeholder="Your Name"
             value={form.name}
             onChange={handleOnChange}
-            className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
+            autoComplete="name"
+            required
           />
           <label
             htmlFor="name"
@@ -98,12 +101,15 @@ export default function Register() {
         </div>
         <div className="relative mt-6">
           <input
+            id="username"
             type="text"
             name="username"
             value={form.username}
             onChange={handleOnChange}
             placeholder="Username"
-            className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
+            autoComplete="username"
+            required
           />
           <label
             htmlFor="username"
@@ -114,12 +120,15 @@ export default function Register() {
         </div>
         <div className="relative mt-6">
           <input
-            type="text"
+            id="email"
+            type="email"
             name="email"
             value={form.email}
             onChange={handleOnChange}
             placeholder="Email Address"
-            className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
+            autoComplete="email"
+            required
           />
           <label
             htmlFor="email"
@@ -130,12 +139,15 @@ export default function Register() {
         </div>
         <div className="relative mt-6">
           <input
+            id="password"
             type="password"
             name="password"
             value={form.password}
             onChange={handleOnChange}
             placeholder="Password"
-            className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
+            autoComplete="new-password"
+            required
           />
           <label
             htmlFor="password"
@@ -147,7 +159,7 @@ export default function Register() {
         <div className="my-6">
           <button
             type="submit"
-            className="w-full rounded-md bg-[#a03b00] hover:bg-[#ff5e00] px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
+            className="min-h-12 w-full rounded-md bg-[#a03b00] px-3 py-3 font-semibold text-white transition hover:bg-[#ff5e00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
           >
             Register
           </button>
@@ -164,7 +176,7 @@ export default function Register() {
       </form>
     </div>
   </div>
-</div>
+</main>
 
   )
 }

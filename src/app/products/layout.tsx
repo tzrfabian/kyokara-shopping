@@ -7,10 +7,10 @@ export default function ProductsLayout({
     children: React.ReactNode;
   }>) {
     return (
-        <>
+        <div className="flex min-h-svh flex-col">
         <Navbar/>
-          {children}
+          <div className="flex-grow">{children}</div>
         <Footer/>
-        </>
+        </div>
     );
 }

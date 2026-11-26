@@ -73,8 +73,8 @@ export default function Login() {
   }
 
   return (
-<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
-  <div className="w-full">
+<main className="flex min-h-[100svh] items-center justify-center bg-gradient-to-br from-orange-50 via-white to-orange-100 px-4 py-8 sm:px-6">
+  <div className="w-full max-w-md rounded-2xl bg-white px-6 py-8 shadow-xl ring-1 ring-orange-900/5 sm:px-10 sm:py-10">
     <div className="text-center">
       <h1 className="text-3xl font-semibold text-orange-900">Sign in</h1>
       <p className="mt-2 text-orange-600">Sign in below to access your account</p>
@@ -83,12 +83,15 @@ export default function Login() {
       <form onSubmit={handleLogin}>
         <div className="relative mt-6">
           <input
-            className="peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
-            type="text"
+            id="email"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
+            type="email"
             name="email"
             placeholder="Email Address"
             value={form.email}
             onChange={handleOnChange}
+            autoComplete="email"
+            required
           />
           <label
             htmlFor="email"
@@ -99,12 +102,15 @@ export default function Login() {
         </div>
         <div className="relative mt-6">
           <input
-            className="peer peer mt-1 w-full border-b-2 border-gray-300 px-0 py-1 placeholder:text-transparent focus:border-gray-500 focus:outline-none"
+            id="password"
+            className="peer mt-1 min-h-12 w-full border-b-2 border-gray-300 px-0 py-2 placeholder:text-transparent focus:border-orange-600 focus:outline-none"
             type="password"
             name="password"
             placeholder="Password"
             value={form.password}
             onChange={handleOnChange}
+            autoComplete="current-password"
+            required
           />
           <label
             htmlFor="password"
@@ -116,7 +122,7 @@ export default function Login() {
         <div className="my-6">
           <button
             type="submit"
-            className="w-full rounded-md bg-[#a03b00] hover:bg-[#ff5e00] px-3 py-4 text-white focus:bg-gray-600 focus:outline-none"
+            className="min-h-12 w-full rounded-md bg-[#a03b00] px-3 py-3 font-semibold text-white transition hover:bg-[#ff5e00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
           >
             Sign in
           </button>
@@ -134,7 +140,7 @@ export default function Login() {
       </form>
     </div>
   </div>
-</div>
+</main>
 
   )
 }

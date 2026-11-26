@@ -10,27 +10,29 @@ type Props = {
 
 export default function ProductCard(props: Props) {
   return (
-<div className="max-w-xs overflow-hidden bg-[#f7ede9] rounded-lg shadow-lg flex flex-col justify-between">
-  <div className="px-4 py-2 flex-grow">
-    <h1 className="text-xl font-bold text-gray-800 capitalize">
+<article className="flex min-w-0 flex-col justify-between overflow-hidden rounded-xl bg-[#f7ede9] shadow-md transition-shadow hover:shadow-lg">
+  <div className="flex-grow px-3 py-3 sm:px-4">
+    <h2 className="line-clamp-2 text-sm font-bold capitalize text-gray-800 sm:text-lg">
       {props.product.name}
-    </h1>
-    <p className="mt-1 text-sm text-gray-600 line-clamp-3">
+    </h2>
+    <p className="mt-1 line-clamp-2 text-xs text-gray-600 sm:line-clamp-3 sm:text-sm">
       {props.product.excerpt}
     </p>
   </div>
   <Link href={`/products/${props.product.slug}`}>
     <img
-      className="object-cover w-full h-60 mt-2"
+      className="aspect-square w-full object-cover sm:aspect-[4/3]"
       src={props.product.thumbnail}
-      alt="product img"
+      alt={props.product.name}
     />
   </Link>
-  <div className="flex items-center justify-between px-4 py-2 bg-orange-600">
-    <h1 className="text-lg font-bold text-white">Rp. {props.product.price}</h1>
-    <AddToWishlistBtn productId={props.product._id.toString()}/>
+  <div className="flex min-w-0 flex-col gap-2 bg-orange-600 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+    <p className="min-w-0 truncate text-xs font-bold text-white sm:text-base">Rp. {props.product.price}</p>
+    <div className="w-full sm:w-auto">
+      <AddToWishlistBtn productId={props.product._id.toString()}/>
+    </div>
   </div>
-</div>
+</article>
 
   )
 }

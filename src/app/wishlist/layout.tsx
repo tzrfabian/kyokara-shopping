@@ -9,7 +9,7 @@ export default function WishlistLayout({
   }>) {
     return (
         <ProtectedComponent>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex min-h-svh flex-col">
         <Navbar/>
           <main className="flex-grow">{children}</main>
           <Footer/>

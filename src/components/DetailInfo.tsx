@@ -1,31 +1,31 @@
 
 export default function DetailInfo() {
   return (
-    <div className="max-w-7xl w-full mx-auto py-16">
-        <div className="grid lg:grid-cols-2 justify-center items-center gap-10">
-        <div>
-            <div className="flex justify-center items-center">
+    <section id="about" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="min-w-0">
+            <div className="mb-6 flex items-center justify-center lg:justify-start">
                 <img
                 src="https://i.imgur.com/CxMgmcF.png"
                 alt="logo"
-                className="w-80"
+                className="w-56 sm:w-72 lg:w-80"
                 />
             </div>
-            <h1 className="md:text-5xl text-4xl font-bold mb-6 md:!leading-[55px]">
+            <h1 className="mb-5 text-balance text-3xl font-bold leading-tight text-orange-950 sm:text-4xl lg:text-5xl">
             Shopping from Everywhere and Anywhere
             </h1>
-            <p className="text-base leading-relaxed">
+            <p className="max-w-2xl text-sm leading-7 text-orange-950/80 sm:text-base">
             {"Kyokara Shopping is your one-stop online destination for convenient and hassle-free shopping. Whether you're at home, work, or on the go, you can easily browse and purchase a wide range of products from the comfort of your device. Enjoy the freedom of shopping whenever and wherever it suits you."}
             </p>
         </div>
-        <div className="max-lg:mt-12 h-full">
+        <div className="min-w-0">
             <img
             src="https://i.imgur.com/ifqrBYA.png"
             alt="banner img"
-            className="w-full h-full object-cover"
+            className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg sm:aspect-[16/10] lg:aspect-[4/3]"
             />
         </div>
         </div>
-    </div>
+    </section>
   )
 }

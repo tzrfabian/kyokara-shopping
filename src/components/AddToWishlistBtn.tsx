@@ -41,8 +41,23 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnProps) {
         credentials: 'include',
       });
 
+      if (response.status === 401) {
+        toast.error("You must sign in first, before add product to wishlist!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        return;
+      }
       if (!response.ok) {
-        throw new Error("You must sign in first, before add product to wishlist!");
+        const data = await response.json() as { error: string };
+        throw new Error(data.error);
       }
       toast.success('Add to Wishlist Success', {
         position: "top-center",
@@ -76,7 +91,7 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnProps) {
   };
 
   return (
-    <div>
+    <div className="w-full">
       {isWished ? (
         <RemoveWishlistBtn productId={productId} setIsWished={setIsWished} fetchWishlists={function (): void {
           throw new Error("Function not implemented.");
@@ -86,7 +101,7 @@ export default function AddToWishlistBtn({ productId }: AddToWishlistBtnProps) {
           onClick={handleAddToWishlist}
           type="button"
           disabled={isAdding}
-          className="px-2 py-1 text-xs border-2 border-orange-600 font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-orange-300 focus:bg-gray-400 focus:outline-none"
+          className="min-h-11 w-full rounded border-2 border-orange-600 bg-white px-2 py-2 text-[10px] font-semibold uppercase text-gray-900 transition-colors hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700 disabled:cursor-wait disabled:opacity-70 sm:w-auto sm:text-xs"
         >
           {isAdding ? "Adding..." : "Add to Wishlist"}
         </button>

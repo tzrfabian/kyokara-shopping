@@ -1,12 +1,12 @@
 
 export default function Footer() {
   return (
-<footer className="bg-gray-200 text-gray-900 py-6 px-16 font-sans tracking-wide">
-  <div className="flex justify-between items-center max-lg:flex-col text-center flex-wrap gap-4">
-    <p className="text-[15px] leading-loose">
+<footer className="bg-gray-100 px-4 py-6 text-gray-900 sm:px-6 lg:px-8">
+  <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
+    <p className="text-sm leading-relaxed">
       © Kyokara Shopping All rights reserved.
     </p>
-    <ul className="flex space-x-6 gap-y-2 max-lg:justify-center flex-wrap">
+    <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
       <li>
         <a href="" className="text-[15px] hover:text-[#ff4c04]">
           Terms of Service

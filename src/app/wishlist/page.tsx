@@ -28,9 +28,9 @@ export default function Wishlist() {
   }, [])
 
   return (
-    <div className='container my-8 px-4 mx-auto'>
-        <p className="text-center font-bold text-2xl mb-8">Your Wishlist</p>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
+    <main className="mx-auto my-6 w-full max-w-7xl px-4 sm:my-10 sm:px-6 lg:px-8">
+        <h1 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:mb-8 sm:text-3xl">Your Wishlist</h1>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5 xl:grid-cols-5">
           {loading ? (
             <Loading/>
           ) : (
@@ -40,6 +40,6 @@ export default function Wishlist() {
           )}
             
         </div>
-    </div>
+    </main>
   )
 }
